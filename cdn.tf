@@ -10,7 +10,7 @@ resource "azurerm_cdn_profile" "web" {
 resource "azurerm_cdn_endpoint" "binkweb" {
   depends_on = [ azurerm_dns_cname_record.binkweb_endpoint_record ]
 
-  name                = "binkweb"
+  name                = "bink${var.location}${var.environment}web"
   profile_name        = azurerm_cdn_profile.web.name
   location            = "global"
   resource_group_name = azurerm_resource_group.rg.name
