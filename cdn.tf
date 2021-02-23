@@ -1,6 +1,6 @@
 resource "azurerm_cdn_profile" "web" {
   name                = "bink${var.location}${var.environment}web"
-  location            = azurerm_resource_group.rg.location
+  location            = "global"
   resource_group_name = azurerm_resource_group.rg.name
   sku                 = "Standard_Microsoft"
 
@@ -12,7 +12,7 @@ resource "azurerm_cdn_endpoint" "binkweb" {
 
   name                = "binkweb"
   profile_name        = azurerm_cdn_profile.web.name
-  location            = azurerm_resource_group.rg.location
+  location            = "global"
   resource_group_name = azurerm_resource_group.rg.name
 
   is_http_allowed = false
