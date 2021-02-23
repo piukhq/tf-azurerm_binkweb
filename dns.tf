@@ -1,7 +1,7 @@
-resource "azurerm_dns_cname_record" "endpoint_record" {
+resource "azurerm_dns_cname_record" "binkweb_endpoint_record" {
     provider = azurerm.core
 
-    name = var.dns_record
+    name = var.binkweb_dns_record
     zone_name = var.public_dns_zone.dns_zone_name
     resource_group_name = var.public_dns_zone.resource_group_name
     ttl = 300

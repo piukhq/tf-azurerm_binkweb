@@ -8,7 +8,7 @@ resource "azurerm_cdn_profile" "web" {
 }
 
 resource "azurerm_cdn_endpoint" "binkweb" {
-  depends_on = [ azurerm_dns_cname_record.endpoint_record ]
+  depends_on = [ azurerm_dns_cname_record.binkweb_endpoint_record ]
 
   name                = "binkweb"
   profile_name        = azurerm_cdn_profile.web.name
