@@ -19,8 +19,8 @@ resource "azurerm_cdn_endpoint" "binkweb" {
   is_https_allowed = true
 
   origin {
-    name      = "bink${var.location}${var.environment}web"
-    host_name = azurerm_storage_account.storage.primary_web_endpoint
+    name      = "binkweb"
+    host_name = azurerm_storage_account.storage.primary_web_host
   }
 }
 
