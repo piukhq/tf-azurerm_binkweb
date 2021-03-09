@@ -18,10 +18,10 @@ resource "azurerm_cdn_endpoint" "binkweb" {
   is_http_allowed = false
   is_https_allowed = true
 
-  # origin_host_header = azurerm_storage_account.storage.primary_web_host
-  # origin {
-  #   name      = "binkweb"
-  #   host_name = azurerm_storage_account.storage.primary_web_host
-  # }
+  origin_host_header = azurerm_storage_account.storage.primary_web_host
+  origin {
+    name      = "binkweb"
+    host_name = azurerm_storage_account.storage.primary_web_host
+  }
 }
 
