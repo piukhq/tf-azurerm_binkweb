@@ -23,5 +23,11 @@ resource "azurerm_cdn_endpoint" "binkweb" {
     name      = "binkweb"
     host_name = azurerm_storage_account.storage.primary_web_host
   }
+
+  lifecycle {
+    ignore_changes = [
+      origin
+    ]
+  }
 }
 
