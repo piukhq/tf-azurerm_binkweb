@@ -24,6 +24,32 @@ resource "azurerm_cdn_endpoint" "binkweb" {
     host_name = azurerm_storage_account.storage.primary_web_host
   }
 
+  delivery_rule {
+    name = "urlbypass"
+    order = 1
+    cache_expiration_action {
+      behavior = "BypassCache"
+    }
+    request_uri_condition {
+      match_values = ["static/"]
+      negate_condition = true
+      operator = "Contains"
+    }
+  }
+
+  delivery_rule {
+    name = "healthz"
+    order = 2
+    cache_expiration_action {
+      behavior = "BypassCache"
+    }
+    request_uri_condition {
+      match_values = ["healthz"]
+      negate_condition = false
+      operator = "EndsWith"
+    }
+  }
+
   lifecycle {
     ignore_changes = [
       origin
