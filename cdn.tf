@@ -24,6 +24,12 @@ resource "azurerm_cdn_endpoint" "binkweb" {
     host_name = azurerm_storage_account.storage.primary_web_host
   }
 
+  global_delivery_rule {
+    cache_expiration_action {
+      behavior = "BypassCache"
+    }
+  }
+
   delivery_rule {
     name = "urlbypass"
     order = 1
