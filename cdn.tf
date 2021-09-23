@@ -31,8 +31,24 @@ resource "azurerm_cdn_endpoint" "binkweb" {
   }
 
   delivery_rule {
-    name = "urlbypass"
+    name = "ipwhitelist"
     order = 1
+    remote_address_condition {
+      match_values = var.ip_whitelist
+      negate_condition = true
+      operator = "IPMatch"
+    }
+    url_redirect_action {
+      hostname = "bink.com"
+      path = "/"
+      protocol = "Https"
+      redirect_type = "Found"
+    }
+  }
+
+  delivery_rule {
+    name = "urlbypass"
+    order = 2
     cache_expiration_action {
       behavior = "BypassCache"
     }
@@ -45,7 +61,7 @@ resource "azurerm_cdn_endpoint" "binkweb" {
 
   delivery_rule {
     name = "healthz"
-    order = 2
+    order = 3
     cache_expiration_action {
       behavior = "BypassCache"
     }
