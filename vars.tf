@@ -3,7 +3,10 @@ variable location { type = string }
 variable tags { type = map(string) }
 variable environment { type = string }
 variable eventhub_authid { type = string }
-
+variable ip_whitelist {
+    type = list
+    default = ["0.0.0.0/0"]
+}
 variable binkweb_dns_record { type = string }
 variable public_dns_zone { type = object({
     resource_group_name = string
