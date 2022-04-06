@@ -23,7 +23,7 @@ resource "azurerm_storage_account" "i" {
     account_replication_type = "ZRS"
     min_tls_version = "TLS1_2"
     enable_https_traffic_only = true
-    allow_blob_public_access = true
+    allow_nested_items_to_be_public = true
 
     static_website {
         index_document = "index.html"
