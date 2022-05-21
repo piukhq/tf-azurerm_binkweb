@@ -18,6 +18,7 @@ resource "azurerm_storage_account" "i" {
         "Environment" = var.environment
     }
 
+    cross_tenant_replication_enabled = false
     account_kind = "StorageV2"
     account_tier = "Standard"
     account_replication_type = "ZRS"
